@@ -62,16 +62,15 @@ public class EmployeeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        Employee employee = new Employee(1, "Tran Van An", "IT", 6000);
-        String employeeJsonString = this.gson.toJson(employee);
-       
-        
-        PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        Employee employee = new Employee(1, "Tran Van An", "IT", 6000);
+        String employeeJsonString = this.gson.toJson(employee);
+
+        PrintWriter out = response.getWriter();
         out.print(employeeJsonString);
         out.flush();
-      
     }
 
     /**
